@@ -1,0 +1,17 @@
+<mat-card fxLayout="row" fxLayoutAlign="space-between">
+    <div fxLayout="row" fxLayoutGap="30px">
+        <button mat-fab class="colorHomeIcon" (click)="onReload()">
+            <mat-icon class="colorHomeIcon__icon2">schedule</mat-icon>
+        </button>
+        <div fxLayoutAlign="center center" class="titleStyle">How long I worked</div>
+    </div>
+
+    <div fxLayoutAlign="center center">
+        <!-- <button mat-flat-button>Contact</button> -->
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item>Contact</button>
+        </mat-menu>
+    </div>
+</mat-card>
+

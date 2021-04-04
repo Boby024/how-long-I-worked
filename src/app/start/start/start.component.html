@@ -1,0 +1,128 @@
+<div class="setPaddingStyle">
+    <mat-card>
+        <mat-card-header fxLayoutAlign="center center">
+          <mat-card-title>Select Your Paramaters</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="setPaddingStyle">
+            <form [formGroup]="dateGroupForm">
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    
+                    <mat-form-field color="primary" appearance="fill">
+                        <mat-label>Start Date</mat-label>
+                        <input matInput [ngxMatDatetimePicker]="picker" formControlName="startDate">
+                        <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+                        <ngx-mat-datetime-picker #picker color="primary"></ngx-mat-datetime-picker>
+                    </mat-form-field>
+                      
+                      <div fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="10px">
+                        
+                        <mat-form-field color="primary" appearance="fill">
+                            <mat-label>End Date</mat-label>
+                            <input matInput [ngxMatDatetimePicker]="picker2" formControlName="endDate" [min]="myDatePickerFrom">
+                            <mat-datepicker-toggle matSuffix [for]="$any(picker2)"></mat-datepicker-toggle>
+                            <ngx-mat-datetime-picker #picker2 color="primary"></ngx-mat-datetime-picker>
+                        </mat-form-field>
+    
+                        <div fxLayoutGap="10px">
+                            <mat-form-field appearance="fill">
+                                <mat-label>select Unit</mat-label>
+                                <mat-select formControlName="idUnit">
+                                  <mat-option *ngFor="let unit of units" [value]="unit.id">
+                                    {{unit.value}}
+                                  </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field *ngIf="unitHoursBoolean">
+                                <mat-label>Only Numeric Value (hours)</mat-label>
+                                <input matInput formControlName="unitHours">
+                            </mat-form-field>
+
+                            <mat-form-field *ngIf="unitMinutesBoolean">
+                                <mat-label>Only Numeric Value (minutes)</mat-label>
+                                <input matInput formControlName="unitMinutes">
+                            </mat-form-field>
+
+                            <div *ngIf="unitHoursMinutesBoolean">
+                                <ngx-mat-timepicker formControlName="unitHoursMinutes"></ngx-mat-timepicker>
+                            </div>
+                            
+                            <mat-checkbox formControlName="disabledValue"
+                                          [color]="'primary'" 
+                                          *ngIf="disabled">
+                                    Disabled
+                            </mat-checkbox>
+                        </div>
+    
+                      </div>
+    
+                      <div fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="10px">
+                        <button mat-raised-button color="primary"
+                            (click)="onCalculate()"
+                            [disabled]="!dateGroupForm.errors?.checkFormStatusRevealed"
+                            >
+                            Calculate
+                        </button>
+                        <button mat-raised-button color="warn" 
+                            (click)="onClear()"
+                            [disabled]="!dateGroupForm.errors?.checkFormStatusRevealed"
+                            >
+                            Clear
+                        </button>
+                      </div>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<!-- <div *ngIf="dateGroupForm.errors?.checkFormStatusRevealed && (dateGroupForm.touched || dateGroupForm.dirty)">
+    Two inputs are neeeded to proceed with the Calcul
+</div> -->
+
+<div class="setPaddingStyle" *ngIf="resultStatus">
+    <mat-card>
+        <mat-card-header fxLayoutAlign="center center">
+            <mat-card-title>Answer</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="setPaddingStyle">
+            <div fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="15px" class="setPaddingStyle__setStyleFamily">
+                <div *ngIf="resultString1.length > 1">Time to just hours: &nbsp; <strong>{{ resultString1 }}</strong></div>
+                <div *ngIf="resultString2.length > 1">Time in number of hours: &nbsp; <strong>{{ resultString2 }}</strong></div>
+                <div *ngIf="resultStringForSelectedUnit.length > 1">Obtained Time: &nbsp; <strong>{{ resultStringForSelectedUnit }}</strong></div>
+            </div>
+        </mat-card-content>
+    </mat-card>    
+</div>
+<div class="setPaddingStyle" *ngIf="howToUseBoolean">
+    <mat-card>
+        <mat-card-header fxLayoutAlign="center center">
+            <mat-card-title>How we Calculate these values</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="setPaddingStyle">
+            <div>
+                The text will be added later
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+
+<div fxLayoutAlign="center center" *ngIf="false">
+    <ngx-mat-timepicker [(ngModel)]="myTimePicker"></ngx-mat-timepicker>
+    <!-- <div fxLayout="column" fxLayoutAlign="space-between" style="width: 20px;">
+        <span>
+            <mat-icon>
+                keyboard_arrow_up
+            </mat-icon>
+        </span>
+        <mat-form-field>
+            <input matInput>
+        </mat-form-field>
+        <span>
+            <mat-icon>
+                keyboard_arrow_down
+            </mat-icon>
+        </span>
+    </div> -->
+</div>

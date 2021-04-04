@@ -1,0 +1,27 @@
+.sticky {
+    background: #fff;
+    box-shadow: 0 3px 12px 0 rgba(0,0,0,.08);
+    position: fixed;
+    top: 0;
+    height: 120px;
+    width: 100%;
+}
+
+.colorHomeIcon {
+    background-color: white;
+
+    &__icon2 {
+        color: #3333ff;
+    }
+}
+
+.titleStyle {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
+    font-style: italic;
+}
+
+mat-card {
+    background-color: #bfbfc5;
+    color: white;
+}

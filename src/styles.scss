@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.content {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* @media (prefers-color-scheme: dark) {
+    h1, h2,h3, p, a {
+    color: rgb(255, 255, 255) !important;
+    -webkit-text-fill-color: rgb(255, 255, 255) !important;
+    }
+}
+
+ @media (prefers-color-scheme: dark) {
+    body {background-color: black;} 
+} */
