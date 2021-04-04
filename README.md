@@ -1,6 +1,9 @@
 # HowLongIWorked
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.<br />
+Another [library](https://www.npmjs.com/package/@angular-material-components/datetime-picker) was used to quickly generate Angular Material DatetimePicker (and/ or Timepicker)
+
+
 
 ## Development server
 
